@@ -1,7 +1,7 @@
 import { useFrame, useThree } from "@react-three/fiber"
 import { useRef } from "react"
 
-import { WaveMaterial } from "./Material"
+import { CustomMaterial } from "./Material"
 
 export const Circle = () => {
   const ref = useRef()
@@ -10,12 +10,11 @@ export const Circle = () => {
   return (
     <mesh scale={[width, height, 1]}>
       <planeGeometry />
-      <waveMaterial
+      <customMaterial
         ref={ref}
-        key={WaveMaterial.key}
-        toneMapped={true}
-        colorStart={"#505050"}
-        colorEnd={"black"}
+        key={CustomMaterial.key}
+        // toneMapped={true}
+        aspect={width / height}
       />
     </mesh>
   )
