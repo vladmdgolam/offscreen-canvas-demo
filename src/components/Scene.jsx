@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { useFrame } from '@react-three/fiber'
+import { useFrame } from "@react-three/fiber"
+import { useRef, useState } from "react"
 
 function Cube(props) {
   const mesh = useRef()
@@ -19,21 +19,22 @@ function Cube(props) {
       scale={active ? 1.5 : 1}
       onClick={() => setActive(!active)}
       onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}>
+      onPointerOut={() => setHover(false)}
+    >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
     </mesh>
   )
 }
 
-const Comp = ({ position }) => {
+const Scene = ({ position }) => {
   return (
     <>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Cube position={position} />
     </>
-  );
+  )
 }
 
-export default Comp
+export default Scene

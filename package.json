@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "dependencies": {
+    "@react-three/drei": "^9.56.28",
     "@react-three/fiber": "^8.11.5",
     "@types/three": "^0.149.0",
+    "babel-plugin-glsl": "^1.0.0",
+    "glsl-noise": "^0.0.0",
     "mitt": "^3.0.0",
     "mobx": "^6.6.0",
     "r3f6": "npm:@react-three/fiber@^6.0.0",
@@ -14,6 +17,7 @@
     "three": "^0.150.1"
   },
   "devDependencies": {
+    "eslint-config-react-app": "^7.0.1",
     "patch-package": "^6.4.7",
     "typescript": "3.8.3"
   },

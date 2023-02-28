@@ -1,33 +1,34 @@
-import { useState, useEffect } from 'react'
-import * as THREE from 'three'
-import { extend, createRoot } from '@react-three/fiber'
+import { createRoot, extend } from "@react-three/fiber"
+import { useEffect, useState } from "react"
+import * as THREE from "three"
+
+import Scene from "../../Scene"
 // import { extend, render } from 'r3f6'
-import { emitter, createPointerEvents } from './events'
-import Comp from './comp'
+import { createPointerEvents, emitter } from "./events"
 
 extend(THREE)
 
-let root;
+let root
 
 const CompWrapper = (initialProps) => {
   const [store, setStore] = useState({})
   const [props, setProps] = useState(initialProps)
 
   useEffect(() => {
-    emitter.on('props', p => {
+    emitter.on("props", (p) => {
       setProps(p)
       setStore({ props: p })
     })
     return () => {
-      emitter.off('props', setProps)
+      emitter.off("props", setProps)
     }
   }, [])
 
-  return <Comp {...props} />
+  return <Scene {...props} />
 }
 
 const handleInit = (payload) => {
-  const { props, drawingSurface: canvas, width, height, pixelRatio } = payload;
+  const { props, drawingSurface: canvas, width, height, pixelRatio } = payload
 
   root = createRoot(canvas)
 
@@ -36,7 +37,7 @@ const handleInit = (payload) => {
     size: {
       width,
       height,
-      updateStyle: false
+      updateStyle: false,
     },
     dpr: pixelRatio,
   })
@@ -56,32 +57,32 @@ const handleInit = (payload) => {
 }
 
 const handleResize = ({ width, height }) => {
-  if (!root) return;
+  if (!root) return
   root.configure({
     size: {
       width,
       height,
-      updateStyle: false
+      updateStyle: false,
     },
   })
 }
 
 const handleEvents = (payload) => {
   emitter.emit(payload.eventName, payload)
-  emitter.on('disconnect', () => {
-    self.postMessage({ type: 'dom_events_disconnect' })
+  emitter.on("disconnect", () => {
+    self.postMessage({ type: "dom_events_disconnect" })
   })
 }
 
 const handleProps = (payload) => {
-  emitter.emit('props', payload)
+  emitter.emit("props", payload)
 }
 
 const handlerMap = {
-  'resize': handleResize,
-  'init': handleInit,
-  'dom_events': handleEvents,
-  'props': handleProps,
+  resize: handleResize,
+  init: handleInit,
+  dom_events: handleEvents,
+  props: handleProps,
 }
 
 self.onmessage = (event) => {
