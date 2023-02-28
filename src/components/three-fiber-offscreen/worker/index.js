@@ -56,7 +56,7 @@ const handleInit = (payload) => {
   // })
 }
 
-const handleResize = ({ width, height }) => {
+const handleResize = ({ width, height, dpr }) => {
   if (!root) return
   root.configure({
     size: {
@@ -64,6 +64,7 @@ const handleResize = ({ width, height }) => {
       height,
       updateStyle: false,
     },
+    dpr,
   })
 }
 

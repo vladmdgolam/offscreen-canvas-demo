@@ -1,75 +1,79 @@
-import React, { useEffect, useRef } from 'react';
-import { DOM_EVENTS } from './consts'
+import { useEffect, useRef } from "react"
 
-const OffscreenCanvas = ({
-  onClick,
-  worker,
-  ...props
-}) => {
-  const canvasRef = useRef();
+import { DOM_EVENTS } from "./consts"
+
+const OffscreenCanvas = ({ onClick, worker, ...props }) => {
+  const canvasRef = useRef()
 
   useEffect(() => {
-    if (!worker) return;
+    if (!worker) return
 
-    const canvas = canvasRef.current;
-    const offscreen = canvasRef.current.transferControlToOffscreen();
+    const canvas = canvasRef.current
+    const offscreen = canvasRef.current.transferControlToOffscreen()
 
-    worker.postMessage( {
-      type: 'init',
-      payload: {
-        props,
-        drawingSurface: offscreen,
-        width: canvas.clientWidth,
-        height: canvas.clientHeight,
-        pixelRatio: window.devicePixelRatio,
-      }
-    }, [ offscreen ] );
+    worker.postMessage(
+      {
+        type: "init",
+        payload: {
+          props,
+          drawingSurface: offscreen,
+          width: canvas.clientWidth,
+          height: canvas.clientHeight,
+          pixelRatio: window.devicePixelRatio,
+        },
+      },
+      [offscreen]
+    )
 
     Object.values(DOM_EVENTS).forEach(([eventName, passive]) => {
-      canvas.addEventListener(eventName, (event) => {
-        worker.postMessage({
-          type: 'dom_events',
-          payload: {
-            eventName,
-            clientX: event.clientX,
-            clientY: event.clientY,
-            offsetX: event.offsetX,
-            offsetY: event.offsetY,
-            x: event.x,
-            y: event.y,
-          }
-        });
-      }, { passive })
+      canvas.addEventListener(
+        eventName,
+        (event) => {
+          worker.postMessage({
+            type: "dom_events",
+            payload: {
+              eventName,
+              clientX: event.clientX,
+              clientY: event.clientY,
+              offsetX: event.offsetX,
+              offsetY: event.offsetY,
+              x: event.x,
+              y: event.y,
+            },
+          })
+        },
+        { passive }
+      )
     })
 
     const handleResize = () => {
+      const dpr = window.devicePixelRatio
       worker.postMessage({
-        type: 'resize',
+        type: "resize",
         payload: {
           width: canvas.clientWidth,
           height: canvas.clientHeight,
-        }
+          dpr,
+        },
       })
     }
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener("resize", handleResize)
     }
   }, [worker])
 
   useEffect(() => {
-    if (!worker) return;
+    if (!worker) return
     worker.postMessage({
-      type: 'props',
-      payload: props
+      type: "props",
+      payload: props,
     })
   }, [props])
 
-  return (
-    <canvas ref={canvasRef} onClick={onClick} />
-  );
+  return <canvas ref={canvasRef} onClick={onClick} />
 }
 
 export default OffscreenCanvas
