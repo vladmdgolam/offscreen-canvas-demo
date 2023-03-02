@@ -3,7 +3,7 @@ import "./styles.css"
 import { Suspense } from "react"
 import { createRoot } from "react-dom/client"
 
-import ThreeFiberOffscreen from "./components/three-fiber-offscreen"
+import ThreeFiberOffscreen from "./three-fiber-offscreen"
 
 const Root = () => {
   return (

@@ -7,15 +7,11 @@ export const Circle = () => {
   const ref = useRef()
   const { width, height } = useThree((state) => state.viewport)
   useFrame((_, delta) => (ref.current.time += delta))
+
   return (
-    <mesh scale={[width, height, 1]}>
+    <mesh scale={[width, height, 1]} key={CustomMaterial.key}>
       <planeGeometry />
-      <customMaterial
-        ref={ref}
-        key={CustomMaterial.key}
-        // toneMapped={true}
-        aspect={width / height}
-      />
+      <customMaterial ref={ref} toneMapped={false} aspect={width / height} />
     </mesh>
   )
 }

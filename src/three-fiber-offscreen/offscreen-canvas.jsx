@@ -63,6 +63,7 @@ const OffscreenCanvas = ({ onClick, worker, ...props }) => {
     return () => {
       window.removeEventListener("resize", handleResize)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [worker])
 
   useEffect(() => {
@@ -71,6 +72,7 @@ const OffscreenCanvas = ({ onClick, worker, ...props }) => {
       type: "props",
       payload: props,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props])
 
   return <canvas ref={canvasRef} onClick={onClick} />

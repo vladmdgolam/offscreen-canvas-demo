@@ -2,8 +2,7 @@ import { createRoot, extend } from "@react-three/fiber"
 import { useEffect, useState } from "react"
 import * as THREE from "three"
 
-import Scene from "../../Scene"
-// import { extend, render } from 'r3f6'
+import Scene from "../../components/Scene"
 import { createPointerEvents, emitter } from "./events"
 
 extend(THREE)
@@ -11,13 +10,11 @@ extend(THREE)
 let root
 
 const CompWrapper = (initialProps) => {
-  const [store, setStore] = useState({})
   const [props, setProps] = useState(initialProps)
 
   useEffect(() => {
     emitter.on("props", (p) => {
       setProps(p)
-      setStore({ props: p })
     })
     return () => {
       emitter.off("props", setProps)
@@ -43,17 +40,6 @@ const handleInit = (payload) => {
   })
 
   root.render(<CompWrapper {...props} />)
-
-  // r3f6
-  // render(<CompWrapper {...props} />, canvas, {
-  //   events: createPointerEvents,
-  //   size: {
-  //     width,
-  //     height,
-  //     updateStyle: false
-  //   },
-  //   dpr: pixelRatio,
-  // })
 }
 
 const handleResize = ({ width, height, dpr }) => {
