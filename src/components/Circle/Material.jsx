@@ -1,6 +1,6 @@
 import { shaderMaterial } from "@react-three/drei"
 import { extend } from "@react-three/fiber"
-// import guid from "short-uuid"
+import glsl from "babel-plugin-glsl/macro"
 import { Color } from "three"
 
 import { colors } from "../../constants"
@@ -12,8 +12,9 @@ const CustomMaterial = shaderMaterial(
     color: new Color(colors.pink),
     blue: new Color(colors.blue),
     blur: 0.0,
+    position: [0.11, -0.15],
   },
-  /* glsl */ `
+  glsl`
       varying vec2 vUv;
       void main() {
           vec4 modelPosition = modelMatrix * vec4(position, 1.0);
@@ -22,13 +23,16 @@ const CustomMaterial = shaderMaterial(
           gl_Position = projectionPosition;
           vUv = uv;
         }`,
-  /* glsl */ `
+  glsl`
         uniform float time;
         varying vec2 vUv;
         uniform float aspect;
         uniform vec3 color;
         uniform vec3 blue;
         uniform float blur;
+        uniform vec2 position;
+
+        #pragma glslify: blendDifference = require(glsl-blend/difference)
 
     float circle(vec2 uv, vec2 pos, float r, float blur) {
         float d = length(uv-pos);
@@ -51,11 +55,15 @@ const CustomMaterial = shaderMaterial(
         float whiteCircle = circle(uv, vec2(0.1,0.15), r*0.75, 0.2);
         col += whiteCircle * vec3(1.);
 
-        float blueCircle = circle(uv, vec2(0.11,-0.15), r*0.75, 0.2);
-        col += blueCircle * blue;
+        
+        float blueCircle = circle(uv, position, r*0.75, 0.2);
+        vec3 blueCircleFilled = blueCircle * blue;
+        
+        vec3 finalCol = blendDifference(col, blueCircleFilled);
+
 
         // clamp
-        col = clamp(col, 0., 1.);
+        col = clamp(finalCol, 0., 1.);
 
         float black = circle(uv, vec2(0.,0.), r, 0.001);
         col -= vec3(black);
