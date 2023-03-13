@@ -1,8 +1,10 @@
 import "./styles.css"
 
+import { Canvas } from "@react-three/fiber"
 import { Suspense, useContext } from "react"
 import { createRoot } from "react-dom/client"
 import { Context } from "src/components/Context"
+import Scene from "src/components/Scene"
 import { States } from "src/constants"
 import { StateContext } from "src/hooks/StateContext"
 
@@ -21,10 +23,20 @@ const Button = () => {
   return <button onClick={handleClick}>next</button>
 }
 
+const Dev = () => {
+  const { state } = useContext(StateContext)
+  return (
+    <Canvas>
+      <Scene state={state} />
+    </Canvas>
+  )
+}
+
 const Root = () => {
   return (
     <Context>
       <Suspense fallback={null}>
+        {/* <Dev /> */}
         <ThreeFiberOffscreen />
       </Suspense>
       <Button />

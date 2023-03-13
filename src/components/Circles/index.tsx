@@ -2,9 +2,30 @@ import { Line } from "@react-three/drei"
 import PoissonDiscSampler from "poisson-disc-sampler"
 import { useMemo } from "react"
 import { States } from "src/constants"
-import { Vector3 } from "three"
+import { Color, Vector3 } from "three"
 
 import { Circle } from "../Circle"
+
+const ConnectLine = ({ from, to }) => {
+  const central = new Vector3().lerpVectors(
+    new Vector3(...from),
+    new Vector3(...to),
+    0.5
+  )
+  // move z a bit to avoid z-fighting
+  const finalPoints: [number, number, number] = [
+    from,
+    central.toArray(),
+    to,
+  ].map((p) => [p[0], p[1], p[2] - 1.1]) as any
+  return (
+    <Line
+      points={finalPoints}
+      color="white"
+      vertexColors={[new Color("black"), new Color("#444"), new Color("black")]}
+    />
+  )
+}
 
 export const Circles = ({ state }) => {
   const [positions, centralIndex] = useMemo(() => {
@@ -54,15 +75,10 @@ export const Circles = ({ state }) => {
     <>
       {positions.map((position, index) => (
         <group key={index}>
-          <Circle i={index} position={position} />
           {state === States.connected && (
-            <Line
-              points={[position.toArray(), centralPos]}
-              color="white"
-              transparent
-              opacity={0.3}
-            />
+            <ConnectLine from={centralPos} to={position.toArray()} />
           )}
+          <Circle i={index} position={position} />
         </group>
       ))}
     </>

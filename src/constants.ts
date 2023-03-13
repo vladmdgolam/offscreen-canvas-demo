@@ -8,15 +8,19 @@ export enum States {
   grid,
   zoomOut,
   connected,
+  initial2,
   zoomIn,
 }
 
 export const props = {
   initial: {
-    zoom: 9,
+    zoom: 6.7,
   },
   zoomOut: {
     zoom: 1,
+  },
+  initial2: {
+    zoom: 6.7,
   },
   zoomIn: {
     zoom: 10,
