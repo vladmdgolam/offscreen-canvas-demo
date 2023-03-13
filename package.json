@@ -1,9 +1,9 @@
 {
-  "name": "offscreen-canvas-demo",
-  "version": "1.0.0",
+  "name": "any-type-onboarding",
+  "version": "0.0.1",
   "main": "src/index.js",
   "dependencies": {
-    "@react-three/drei": "^9.56.28",
+    "@react-three/drei": "^9.57.2",
     "@react-three/fiber": "^8.11.5",
     "@types/three": "^0.149.0",
     "babel-plugin-glsl": "^1.0.0",
@@ -11,7 +11,7 @@
     "glsl-noise": "^0.0.0",
     "glslify": "^7.1.1",
     "mitt": "^3.0.0",
-    "mobx": "^6.6.0",
+    "poisson-disc-sampler": "^1.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "^5.0.1",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "eslint-config-react-app": "^7.0.1",
     "patch-package": "^6.4.7",
-    "typescript": "3.8.3"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "dev": "react-scripts start",

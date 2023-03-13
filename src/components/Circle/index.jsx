@@ -1,11 +1,11 @@
-import { useFrame, useThree } from "@react-three/fiber"
+import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
+import { AdditiveBlending } from "three"
 
 import { CustomMaterial } from "./Material"
 
-export const Circle = () => {
+export const Circle = ({ i = 0, ...props }) => {
   const ref = useRef()
-  const { width, height } = useThree((state) => state.viewport)
   useFrame((state, delta) => {
     ref.current.time += delta
     // find angle of state.mouse.x and y and set position with radius 0.15
@@ -14,9 +14,14 @@ export const Circle = () => {
   })
 
   return (
-    <mesh scale={[width, height, 1]} key={CustomMaterial.key}>
+    <mesh key={CustomMaterial.key} {...props}>
       <planeGeometry />
-      <customMaterial ref={ref} toneMapped={false} aspect={width / height} />
+      <customMaterial
+        ref={ref}
+        seed={i}
+        toneMapped={false}
+        blending={AdditiveBlending}
+      />
     </mesh>
   )
 }

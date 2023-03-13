@@ -1584,16 +1584,16 @@
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.6.1.tgz#913d3a68c5cbc1124fdb18eff919432f7b6abdde"
   integrity sha512-POu8Mk0hIU3lRXB3bGIGe4VHIwwDsQyoD1F394OK7STTiX9w4dG3cTLljjYswkQN+hDSHRrj4O36kuVa7KPU8Q==
 
-"@react-three/drei@^9.56.28":
-  version "9.56.28"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.56.28.tgz#b0889ba7bac25ce60b17c5d196eaa4906f3ed78d"
-  integrity sha512-BpBCrn/6Ch0HN9hfSJ35gPHhWkTVg4qeuwt0lwKkTLkFin226P7epaBEye5LjKkzBKTPvCXMOLAn7eRDsWEwsQ==
+"@react-three/drei@^9.57.2":
+  version "9.57.2"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.57.2.tgz#050225a212f463538f3de139df88afce836b5fe0"
+  integrity sha512-wkbpMruvjGj5dA0QEA7cuIm3O1NvcfZHkYtZTAicKnZ83OF4w97inE+epp5/j7juVlUFU7AQBHEYmNGiHKCKOQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@react-spring/three" "~9.6.1"
     "@use-gesture/react" "^10.2.24"
-    camera-controls "^2.1.0"
-    detect-gpu "^5.0.10"
+    camera-controls "^2.3.1"
+    detect-gpu "^5.0.14"
     glsl-noise "^0.0.0"
     lodash.clamp "^4.0.3"
     lodash.omit "^4.5.0"
@@ -3019,7 +3019,7 @@ camelcase@^6.2.0, camelcase@^6.2.1:
   resolved "https://registry.npmmirror.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
-camera-controls@^2.1.0:
+camera-controls@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/camera-controls/-/camera-controls-2.3.1.tgz#8e8e241fb874ae38b6fa1d22ba445a2e7b3b94ea"
   integrity sha512-mGPDOqCTSUqaeX3yR3bWQ/p1M5CR8C+cnqndBxQugfGKysn1dhRtw8Q6sG1hq4GL8RPsGwRanwQk5zwQjyrxyQ==
@@ -3673,10 +3673,10 @@ destroy@1.2.0:
   resolved "https://registry.npmmirror.com/destroy/-/destroy-1.2.0.tgz#4803735509ad8be552934c67df614f94e66fa015"
   integrity sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==
 
-detect-gpu@^5.0.10:
-  version "5.0.13"
-  resolved "https://registry.yarnpkg.com/detect-gpu/-/detect-gpu-5.0.13.tgz#a029c6afcf3ba9dbda6b28a8fbbf0b4a36ad5742"
-  integrity sha512-IsQRA69imfta1BdFFIgOspwQn5z/CLMzREpXwxP6F0hniMr7dlamBUSFdOSEnsIUpfL8lrY1NenK2Zxal54qbw==
+detect-gpu@^5.0.14:
+  version "5.0.14"
+  resolved "https://registry.yarnpkg.com/detect-gpu/-/detect-gpu-5.0.14.tgz#69cbb2941e35f5abf938df02a9e165cb7a17822d"
+  integrity sha512-CZwpdrG3hX4oYBcRATw8YaRV2I3AFIN2X6PA0rf9IQ0uYzi7w4gGQkmzazO9UtApHAYRraUICupnIQ+G3o0JDQ==
   dependencies:
     webgl-constants "^1.1.1"
 
@@ -6452,11 +6452,6 @@ mmd-parser@^1.0.4:
   resolved "https://registry.yarnpkg.com/mmd-parser/-/mmd-parser-1.0.4.tgz#87cc05782cb5974ca854f0303fc5147bc9d690e7"
   integrity sha512-Qi0VCU46t2IwfGv5KF0+D/t9cizcDug7qnNoy9Ggk7aucp0tssV8IwTMkBlDbm+VqAf3cdQHTCARKSsuS2MYFg==
 
-mobx@^6.6.0:
-  version "6.6.0"
-  resolved "https://registry.npmmirror.com/mobx/-/mobx-6.6.0.tgz#617ca1f3b745a781fa89c5eb94a773e3cbeff8ae"
-  integrity sha512-MNTKevLH/6DShLZcmSL351+JgiJPO56A4GUpoiDQ3/yZ0mAtclNLdHK9q4BcQhibx8/JSDupfTpbX2NZPemlRg==
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmmirror.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -6948,6 +6943,11 @@ pkg-up@^3.1.0:
   integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
   dependencies:
     find-up "^3.0.0"
+
+poisson-disc-sampler@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/poisson-disc-sampler/-/poisson-disc-sampler-1.1.0.tgz#3df919b3ce2adfc5bb43f21b5c3cea7dcfe88fd6"
+  integrity sha512-dnGmK5QuR5eZJU0iHh5CdhSZD6pwDNwZSW0GZZSrJ8RkVR77SwR25v9thblxcnH8h0OlmoKRjO1B63mbvIZmKw==
 
 postcss-attribute-case-insensitive@^5.0.0:
   version "5.0.0"
@@ -9014,10 +9014,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@3.8.3:
-  version "3.8.3"
-  resolved "https://registry.npmmirror.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
-  integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
+typescript@^4.9.5:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
