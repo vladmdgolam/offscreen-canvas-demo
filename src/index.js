@@ -33,11 +33,12 @@ const Dev = () => {
 }
 
 const Root = () => {
+  const dev = process.env.NODE_ENV === "development"
+
   return (
     <Context>
       <Suspense fallback={null}>
-        {/* <Dev /> */}
-        <ThreeFiberOffscreen />
+        {dev ? <Dev /> : <ThreeFiberOffscreen />}
       </Suspense>
       <Button />
     </Context>

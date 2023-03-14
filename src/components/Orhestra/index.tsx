@@ -1,4 +1,3 @@
-import { OrbitControls } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { States, props } from "src/constants"
 
@@ -16,9 +15,11 @@ export const Orchestra = ({ state: sceneState }) => {
     state.camera.updateProjectionMatrix()
   })
 
+  // const dev = process.env.NODE_ENV === "development"
+
   return (
     <>
-      <OrbitControls />
+      {/* {dev && <OrbitControls />} */}
       {sceneState === States.grid && (
         <Grid
           rotation={[Math.PI / 2, 0, 0]}
